@@ -12,7 +12,6 @@ To run streamlit:
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import pickle
 from collections import defaultdict
 from recommender_and_other_functions import yosemite_attraction_reco
