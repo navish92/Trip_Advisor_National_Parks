@@ -15,11 +15,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 from collections import defaultdict
-from other_functions import yosemite_attraction_reco
+from recommender_and_other_functions import yosemite_attraction_reco
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Loading Dataframe & Storing list of options to show to user from dataframe's column names
-df = pd.read_csv("Attractions_Topics_Summary_Scores.csv", index_col = 0)
+df = pd.read_csv("../Data/Attractions_Topics_Summary_Scores.csv", index_col = 0)
 options = df.columns.tolist()[0:12]
 
 # Creating a sidebar for aesthetic appeal
