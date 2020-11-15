@@ -1,6 +1,6 @@
 """
 @Navish
-This is a script for scraping information from Trip Advisor. 
+This python module is for scraping information from Trip Advisor. 
 """
 
 from bs4 import BeautifulSoup
@@ -114,13 +114,3 @@ def ta_attraction_reviews_parser(ta_reviews_page_soup):
         reviews_list.append(reviews_dict)
 
     return reviews_list
-
-        
-
-
-
-
-
-    
-
-# def review_scraper(url, )

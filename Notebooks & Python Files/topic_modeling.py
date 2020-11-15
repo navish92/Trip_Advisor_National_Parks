@@ -58,5 +58,3 @@ def lsa_topic_modeling(word_matrix, vocab, n = 5):
     word_matrix = pd.DataFrame(lsa.components_, columns = vocab).T.add_prefix('topic_')
 
     return lsa, lsa.explained_variance_, topic_matrix, word_matrix
-
-# def lda_  
