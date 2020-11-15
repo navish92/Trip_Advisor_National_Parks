@@ -13,6 +13,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+import numpy as np
 from collections import defaultdict
 from recommender_and_other_functions import yosemite_attraction_reco
 from sklearn.metrics.pairwise import cosine_similarity
