@@ -40,7 +40,7 @@ The chart below shows the various topics & the number of documents falling under
 
 ![Document Topic Frequencies](./Visuals/cumulative_topic_frequency.png)
 
-#### 3. [Topic Interpretation and Recommendion System](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/4-Topic_Interpretation_and_Recommender.ipynb)  
+#### 3. [Topic Interpretation and Recommendation System](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/4-Topic_Interpretation_and_Recommender.ipynb)  
 
 The obtained topics were further analyzed using Logistic Regression. They were used as features with the outlook sentiment serving as the target variable. The coeffecients for each topic were informative in providing insight on which topics usually led to a more positive outcome.  
 Additional analysis on the trend for topics over time & dimensionality reduction/clustering was also performed to gain a deeper understanding of the topics.  
