@@ -29,7 +29,6 @@ The corpus of documents were cleaned using regex, NLTK & Spacy using the followi
 Finally, a new column called 'Outlook Sentiment' was made using the ratings on each review - a 4 or 5 rating corresponded to a positive outcome, and the rest negative.
 
 The word cloud below provides a glimpse of the words present in the cleaned corpus.
-
 ![Reviews Word Cloud](./Visuals/wordcloud.png)
 
 #### 2. [Topic Modeling](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/3-Topic_Modeling_Corex.ipynb)
@@ -37,7 +36,6 @@ The word cloud below provides a glimpse of the words present in the cleaned corp
 Various topic modeling approaches were tried, including NMF, LSA, LDA & Corex. Ultimately, Corex was found to yield the best results, especially due to its semi-supervised nature enabled by the use of anchor words. 18 topics were finally settled on, with a Total Correlation (TC) score of 24.75.  
 
 The chart below shows the various topics & the number of documents falling under each of them. (Note: A document can & often belongs under more than one topic; but differ in how strongly they score under each topic)
-
 ![Document Topic Frequencies](./Visuals/cumulative_topic_frequency.png)
 
 #### 3. [Topic Interpretation and Recommendation System](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/4-Topic_Interpretation_and_Recommender.ipynb)  
@@ -64,7 +62,8 @@ From the 18 topics that were found, 12 were chosen to be used for the front end 
 
 The choice & naming for the above topics were done based on domain knowledge, as I am an avid traveler and a huge fan of the U.S. National Parks system.  
     
-The user can enter their top 3 priorities for their trip to Yosemite National Park. Using cosine similarity, they will be provided 3 attractions to prioritize on accordingly. The interactive version of this app was deployed onto a web interface using Streamlit.  
+The user can enter their top 3 priorities for their trip to Yosemite National Park. Using cosine similarity, they will be provided 3 attractions to prioritize on accordingly. **The interactive version of this app was deployed onto a web interface using Streamlit, and can be viewed [here](https://share.streamlit.io/navish92/personalized_trip_advisor/main/streamlit_attractions_recommender.py)**.   
+
 
 ## Other Findings
 
