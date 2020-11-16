@@ -72,7 +72,7 @@ Based on simple aggregate measures, **Shuttle Bus, Organized Tours,** and **Hiki
 
 Using a logistic Regression model, where the topics served as features and the sentiment outlook as target, the following feature coefficients were obtained to gain further insight. 
 
-![LogReg Coefficients]("./Visuals/Logreg Features.png")
+![LogReg Coefficients](./Visuals/Logreg_Features.png)
 
 **Hiking Advice** contributing the most towards a higher negative outcome makes sense, since people who faced certain issues would be more expressive of their problems & share advice to help future travelers. Correspondingly, **Climbing Advice** and **Beautiful Views** corresponding to highest postive outcomes intuitively also makes sense, as Yosemite does have exceedingly good views and people who tend to undertake climbing activities are known to very openly & freely share advice to help the next climber (missteps in climbing can lead to serious injuries/death).   
 
