@@ -1,0 +1,4 @@
+*.pptx
+*.ppt
+**/*.ipynb_checkpoints/
+**/*.__pycache__/
