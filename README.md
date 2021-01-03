@@ -20,7 +20,7 @@ The following steps were undertaken to deliver on the project's objective.
 10,000+ reviews were scrapped from [Trip Advisor](https://www.tripadvisor.in).   
 Specifically, Trip Advisor's top attractions for [Yosemite National Park](https://www.tripadvisor.in/Attractions-g61000-Activities-Yosemite_National_Park_California.html) was used to obtain a list of attractions and then reviews from each individual [attraction's page](https://www.tripadvisor.in/Attraction_Review-g61000-d139187-Reviews-Glacier_Point-Yosemite_National_Park_California.html) was used to obtain the reviews itself.  
 
-![Data Source Collection Process Screenshots](./Visuals/Data_Source_Screenshots.jpg)
+![Data Source Collection Process Screenshots](./Visuals/data_source_screenshots.png)
 
 ### [NLP Preprocessing](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/2-NLP_Preprocessing.ipynb)
 
@@ -39,7 +39,7 @@ The word cloud below provides a glimpse of the words present in the cleaned corp
 Various topic modeling approaches were tried, including NMF, LDA & Corex. Ultimately, Corex was found to yield the best results, especially due to its semi-supervised nature enabled by the use of anchor words. 18 topics were finally settled on, with a Total Correlation (TC) score of 24.75.  
 
 The chart below shows the various topics & the number of documents falling under each of them. (Note: A document can & often belongs under more than one topic; but differ in how strongly they score under each topic)
-<p align="center"> <img src="/Visuals/cumulative_topic_frequency.png" alt="Cumulative Topic Frequency" width="500"/> </p>
+<p align="center"> <img src="/Visuals/cumulative_topic_frequency.png" alt="Cumulative Topic Frequency" width="600"/> </p>
 
 
 ### [Topic Interpretation and Recommendation System](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/4-Topic_Interpretation_and_Recommender.ipynb)  
@@ -52,22 +52,21 @@ Most importantly, a recommender system was built to finally wrap everything in a
 ## [Results: Attractions Recommendation App](https://share.streamlit.io/navish92/personalized_trip_advisor/main/streamlit_attractions_recommender.py)
 
 From the 18 topics that were found, 12 were chosen to be used for the front end aspect of the recommendation system. These are:
-![Selected List of Topics](./Visuals/corex_topics.png)
+<p align="center"> <img src="/Visuals/corex_topics.png" alt="Recommenders Topics" width="800"/> </p>
 
 The choice & naming for the above topics were done based on domain knowledge, as I am an avid traveler and a huge fan of the U.S. National Parks system.  
     
 The user can enter their top 3 priorities for their trip to Yosemite National Park. Using cosine similarity, they will be provided 3 attractions to prioritize on accordingly. **The interactive version of this app was deployed onto a web interface using Streamlit, and can be viewed [here](https://share.streamlit.io/navish92/personalized_trip_advisor/main/streamlit_attractions_recommender.py)**.   
 
 Below are screenshots of various parts of the app, for easy reference.
-![Recommenders App Screenshot](./Visuals/streamlit_app.png)
+<p align="center"> <img src="/Visuals/streamlit_app.png" alt="Recommenders App" width="800"/> </p>
 
 ## Results: Other Findings
 
 Based on simple aggregate measures, **Shuttle Bus, Organized Tours,** and **Hiking Advice** topics had the highest negative reviews contribution, at 5% of their respective total occurances under that topic. This isn't surprising, as all of these would be areas where people may face higher grievances and potentially express them. 
 
 Using a logistic Regression model, where the topics served as features and the sentiment outlook as target, the following feature coefficients were obtained to gain further insight. 
-
-![LogReg Coefficients](./Visuals/Logreg_Features.png)
+<p align="center"> <img src="/Visuals/Logreg_Features.png" alt="Logreg Features" width="600"/> </p>
 
 **Hiking Advice** contributing the most towards a higher negative outcome makes sense, since people who faced certain issues would be more expressive of their problems & share advice to help future travelers. Correspondingly, **Climbing Advice** and **Beautiful Views** corresponding to highest postive outcomes intuitively also makes sense, as Yosemite does have exceedingly good views and people who tend to undertake climbing activities are known to very openly & freely share advice to help the next climber (missteps in climbing can lead to serious injuries/death).   
 
