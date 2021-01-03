@@ -4,68 +4,66 @@
 Whether you're a travel aficionado or a once-in-a-blue-moon vacationer, one of the most vital aspects for a successful trip is figuring out how you should spend your time at your destination - which is always a laborious undertaking!  It's very easy to get a huge list of "Must-see" for any place you are planning to visit, but many additional hours of research is required to understand which must-see points fits in with your preferences.
 
 ## Objective
-Focusing on a single tourism destination - Yosemite National Park, I will be using reviews of attractions listed under "Top Things To Do" on its **Trip Advisor** page, to create a travel preferences recommendation system, using NLP based Topic Modeling techniques.
-
-## Data Sources
-
-10,000+ reviews were scrapped from [Trip Advisor](www.tripadvisor.com).   
-Specifically, their top attractions for [Yosemite National Park](https://www.tripadvisor.in/Attractions-g61000-Activities-Yosemite_National_Park_California.html) was used to obtain a list of attractions and then reviews from each individual [attraction's page](https://www.tripadvisor.in/Attraction_Review-g61000-d139187-Reviews-Glacier_Point-Yosemite_National_Park_California.html) was used to obtain the reviews itself.  
+Focusing on a single tourism destination - **Yosemite National Park**, I use **reviews of attractions** listed under "Top Things To Do" on its **Trip Advisor** page, to create a **travel preferences based recommendation system**, using NLP based **Topic Modeling** techniques.
 
 ## Approach
 
-The scraped reviews underwent three steps of processing.
+The following steps were undertaken to deliver on the project's objective.
 
-#### 1. [Pre-processing (Cleaning)](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/2-NLP_Preprocessing.ipynb)
+1. [Data Collection](#data-collection) - Reviews scrapped from Trip Advisor 
+1. [NLP Preprocessing](#nlp-preporcessing) - Series of text cleaning & manipulation to prepare corpus for topic modeling
+1. [Topic Modelling](#topic-modeling) - Dimensionality reduction using Corex algorithm & capture the recurrent themes across the documents (reviews)
+1. [Topic Interpretation and Recommendation System](topic-interpretation-and-recommendation-system) - Exploring the impact of topics on sentiment outcomes along with other trends & creating a recommendation system.
 
-The corpus of documents were cleaned using regex, NLTK & Spacy using the following steps:
-- All characters were converted to lower case
-- All website links were removed by referencing any text that started with "http"
-- All emails were removed by identifying any text with a '@' in between its characters
-- Text with certain punctuations were substituted with whitespace (a lot of reviews contain text such as difficult/strenous - this helps clean that up).
-- Everything except English alphabets & whitespace were dropped
-- Using Spacy, all words were lemmatized
-- Using the default 'Stop Words' list from sklearn, a majority of the stop words were removed (except words such as "not", "no")
-- A list of custom additional stop words were made. Primarily, this comprised of the names of attractions. Extra words were added based on feedback from topic modeling.  
-Finally, a new column called 'Outlook Sentiment' was made using the ratings on each review - a 4 or 5 rating corresponded to a positive outcome, and the rest negative.
+### Data Collection
+
+10,000+ reviews were scrapped from [Trip Advisor](https://www.tripadvisor.in).   
+Specifically, Trip Advisor's top attractions for [Yosemite National Park](https://www.tripadvisor.in/Attractions-g61000-Activities-Yosemite_National_Park_California.html) was used to obtain a list of attractions and then reviews from each individual [attraction's page](https://www.tripadvisor.in/Attraction_Review-g61000-d139187-Reviews-Glacier_Point-Yosemite_National_Park_California.html) was used to obtain the reviews itself.  
+
+![Data Source Collection Process Screenshots](./Visuals/Data_Source_Screenshots.jpg)
+
+
+### [NLP Preprocessing](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/2-NLP_Preprocessing.ipynb)
+
+The corpus was preprocessed for noise removal, lemmatization & stop word removal (via regex, string functions, NLTK & Spacy) using the following steps:
+1. Noise Removal using **Regex** and **String functions** to convert to lower case, remove emails/website links, separate out words joined punctuations, and remove everything except all alphabets & whitespace.
+2. Word Lemmatization using **Spacy**
+3. Stop Word Removal using a starter list from **NLTK** but also curated a custom list of additional words
+
+Create a new column called 'Outlook Sentiment' was made using the ratings on each review - a 4 or 5 rating corresponded to a positive outcome, and the rest negative.
 
 The word cloud below provides a glimpse of the words present in the cleaned corpus.
 ![Reviews Word Cloud](./Visuals/wordcloud.png)
 
-#### 2. [Topic Modeling](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/3-Topic_Modeling_Corex.ipynb)
+<p align="center"> <img src="/Visuals/wordcloud.png" alt="Reviews Word Cloud" width="200"/> </p>
 
-Various topic modeling approaches were tried, including NMF, LSA, LDA & Corex. Ultimately, Corex was found to yield the best results, especially due to its semi-supervised nature enabled by the use of anchor words. 18 topics were finally settled on, with a Total Correlation (TC) score of 24.75.  
+### [Topic Modeling](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/3-Topic_Modeling_Corex.ipynb)
 
-The chart below shows the various topics & the number of documents falling under each of them. (Note: A document can & often belongs under more than one topic; but differ in how strongly they score under each topic)
-![Document Topic Frequencies](./Visuals/cumulative_topic_frequency.png)
+Various topic modeling approaches were tried, including NMF, LDA & Corex. Ultimately, Corex was found to yield the best results, especially due to its semi-supervised nature enabled by the use of anchor words. 18 topics were finally settled on, with a Total Correlation (TC) score of 24.75.  
 
-#### 3. [Topic Interpretation and Recommendation System](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/4-Topic_Interpretation_and_Recommender.ipynb)  
+The picture shows a selected list of topics that were named based on the highest scoring words & reviews under those topics.
+![Selected List of Topics](./Visuals/Data_Source_Screenshots.png)
 
-The obtained topics were further analyzed using Logistic Regression. They were used as features with the outlook sentiment serving as the target variable. The coeffecients for each topic were informative in providing insight on which topics usually led to a more positive outcome.  
+### [Topic Interpretation and Recommendation System](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/4-Topic_Interpretation_and_Recommender.ipynb)  
+
+The obtained topics were further analyzed using Logistic Regression. They were used as features with review outlook sentiment serving as the target variable. The coeffecients for each topic were informative in providing insight on which topics usually led to a more positive outcome.  
 Additional analysis on the trend for topics over time & dimensionality reduction/clustering was also performed to gain a deeper understanding of the topics.  
+  
 Most importantly, a recommender system was built to finally wrap everything in a user-centric manner. 
 
-## Recommendation System
+## Results: Attractions Recommendation App
 
 From the 18 topics that were found, 12 were chosen to be used for the front end aspect of the recommendation system. These are:
-- Breathtaking Views
-- Must Visits
-- Panaromic Photography
-- Strenuous Hikes
-- Easy Trails
-- Gorgeous Sunsets
-- Stunning Waterfalls
-- Serene Lakes
-- Wildlife
-- Stargazing
-- Shuttle Bus
-- Organized Tours
+![Selected List of Topics](./Visuals/Data_Source_Screenshots.png)
 
 The choice & naming for the above topics were done based on domain knowledge, as I am an avid traveler and a huge fan of the U.S. National Parks system.  
     
 The user can enter their top 3 priorities for their trip to Yosemite National Park. Using cosine similarity, they will be provided 3 attractions to prioritize on accordingly. **The interactive version of this app was deployed onto a web interface using Streamlit, and can be viewed [here](https://share.streamlit.io/navish92/personalized_trip_advisor/main/streamlit_attractions_recommender.py)**.   
 
+Here's a screenshot of the various parts of the app for easy reference.
+![Recommenders App Screenshot](./Visuals/streamlit_app.png)
 
-## Other Findings
+## Results: Other Findings
 
 Based on simple aggregate measures, **Shuttle Bus, Organized Tours,** and **Hiking Advice** topics had the highest negative reviews contribution, at 5% of their respective total occurances under that topic. This isn't surprising, as all of these would be areas where people may face higher grievances and potentially express them. 
 
@@ -94,7 +92,7 @@ The work done thus far looks incredibly promising. As part of next steps, the fo
 - Pandas
 - Scikit-learn (Feature Extraction, Decomposition, Linear Models, Pairwise Metrics)
 - Matplotlib / Seaborn / Word Cloud / Scattertext
-- Selenium
+- Selenium / BeautifulSoup / requests
 - Streamlit
 
 ## Skills Demonstrated
