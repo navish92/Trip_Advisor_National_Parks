@@ -1,7 +1,8 @@
 """
-Other functions
+    Python file contains functions for the recommenders system & Classification Modelling
 
 """
+
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
@@ -20,7 +21,7 @@ from sklearn.metrics import log_loss, precision_score, recall_score, accuracy_sc
 
 def yosemite_attraction_reco(df_attractions, user_weights = defaultdict(int)):
     """
-    Returns a recommendation of attractions to prioritize on based on desired characteristics input by the user.
+    Returns a prioritized list of recommended attractionsn, based on desired characteristics input by the user.
     
     Input: df_attractions [DataFrame] - Scores across each topic & attraction
            user_weights [Default Dictionary] - Weights input by the user for the desired topics

@@ -24,7 +24,13 @@ sp_nlp = spacy.load('en', disable=['parser'])
 def remove_stopwords(text, remove_words_list = stopwords.words('english')):
     """
     Removes stop works from the provided text, using the list provided in the calling function 
-    or the default list of stop words provided here.
+    or the default list of stop words obtained from NLTK.
+    Args:
+        text ([str]): sentence (review) from which stop words have to be removed
+        remove_words_list ([list of strings], optional): Custom list of stop words to be used. Defaults to stopwords list from the NLTK corpus.
+
+    Returns:
+        [str]: processed text with stop words removed
     """
     tokens = word_tokenize(text)
     tokens = [token.strip() for token in tokens]
@@ -35,6 +41,12 @@ def remove_stopwords(text, remove_words_list = stopwords.words('english')):
 def spacy_lemmatization(text):
     """
     Uses Spacy to lemmatize each token in the text provided
+
+    Args:
+        text ([str]): text string whose tokens will be lemmatized using Spacy
+
+    Returns:
+        tokens_lemma_remove_pron [str]: Return lemmatized version of the tokens present in the input 'text' argument
     """
     
     spacy_text = sp_nlp(text)
@@ -46,9 +58,17 @@ def spacy_lemmatization(text):
 
 def spacy_pos_filtering(text, pos = [], ent_label = []):
     """
-    Takes the text provided and keeps only the pos types specified in the calling function.
-    Additionally, the entity types described in the argument are removed from the text.
-    """ 
+    Takes the text provided and KEEPS only the pos types specified in the calling function.
+    Additionally, the entity types described in the argument are REMOVED from the text.
+
+    Args:
+        text (str): Text string whose tokens will be analyzed POS & Entity Labels and then processed on.
+        pos (list, optional): List of POS types that should be kept. Defaults to empty list i.e. all POS types will be kept
+        ent_label (list, optional): List of Named Entity types that should be removed. Defaults to empty list i.e. all entity types will be kept
+
+    Returns:
+        filtered_text [str]: Processed text
+    """
 
     spacy_text = sp_nlp(text)
     
@@ -68,7 +88,7 @@ def cleaning(text):
         text (str): Input string to be cleaned
 
     Returns:
-        text: cleaned text
+        text (str): cleaned text
     """
 
     text = text.lower()

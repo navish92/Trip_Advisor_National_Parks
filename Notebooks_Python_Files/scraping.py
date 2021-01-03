@@ -1,5 +1,4 @@
 """
-@Navish
 This python module is for scraping information from Trip Advisor. 
 """
 
@@ -112,5 +111,7 @@ def ta_attraction_reviews_parser(ta_reviews_page_soup):
             continue
 
         reviews_list.append(reviews_dict)
+
+
 
     return reviews_list
