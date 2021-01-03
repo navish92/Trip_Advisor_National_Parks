@@ -22,7 +22,6 @@ Specifically, Trip Advisor's top attractions for [Yosemite National Park](https:
 
 ![Data Source Collection Process Screenshots](./Visuals/Data_Source_Screenshots.jpg)
 
-
 ### [NLP Preprocessing](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/2-NLP_Preprocessing.ipynb)
 
 The corpus was preprocessed for noise removal, lemmatization & stop word removal (via regex, string functions, NLTK & Spacy) using the following steps:
@@ -33,16 +32,15 @@ The corpus was preprocessed for noise removal, lemmatization & stop word removal
 Create a new column called 'Outlook Sentiment' was made using the ratings on each review - a 4 or 5 rating corresponded to a positive outcome, and the rest negative.
 
 The word cloud below provides a glimpse of the words present in the cleaned corpus.
-![Reviews Word Cloud](/Visuals/wordcloud.png)
-
-<p align="center"> <img src="/Visuals/wordcloud.png" alt="Reviews Word Cloud" width="400"/> </p>
+<p align="center"> <img src="/Visuals/wordcloud.png" alt="Reviews Word Cloud" width="500"/> </p>
 
 ### [Topic Modeling](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/3-Topic_Modeling_Corex.ipynb)
 
 Various topic modeling approaches were tried, including NMF, LDA & Corex. Ultimately, Corex was found to yield the best results, especially due to its semi-supervised nature enabled by the use of anchor words. 18 topics were finally settled on, with a Total Correlation (TC) score of 24.75.  
 
-The picture shows a selected list of topics that were named based on the highest scoring words & reviews under those topics.
-![Selected List of Topics](./Visuals/Data_Source_Screenshots.png)
+The chart below shows the various topics & the number of documents falling under each of them. (Note: A document can & often belongs under more than one topic; but differ in how strongly they score under each topic)
+<p align="center"> <img src="/Visuals/cumulative_topic_frequency.png" alt="Cumulative Topic Frequency" width="500"/> </p>
+
 
 ### [Topic Interpretation and Recommendation System](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/4-Topic_Interpretation_and_Recommender.ipynb)  
 
@@ -51,16 +49,16 @@ Additional analysis on the trend for topics over time & dimensionality reduction
   
 Most importantly, a recommender system was built to finally wrap everything in a user-centric manner. 
 
-## Results: Attractions Recommendation App
+## [Results: Attractions Recommendation App](https://share.streamlit.io/navish92/personalized_trip_advisor/main/streamlit_attractions_recommender.py)
 
 From the 18 topics that were found, 12 were chosen to be used for the front end aspect of the recommendation system. These are:
-![Selected List of Topics](./Visuals/Data_Source_Screenshots.png)
+![Selected List of Topics](./Visuals/corex_topics.png)
 
 The choice & naming for the above topics were done based on domain knowledge, as I am an avid traveler and a huge fan of the U.S. National Parks system.  
     
 The user can enter their top 3 priorities for their trip to Yosemite National Park. Using cosine similarity, they will be provided 3 attractions to prioritize on accordingly. **The interactive version of this app was deployed onto a web interface using Streamlit, and can be viewed [here](https://share.streamlit.io/navish92/personalized_trip_advisor/main/streamlit_attractions_recommender.py)**.   
 
-Here's a screenshot of the various parts of the app for easy reference.
+Below are screenshots of various parts of the app, for easy reference.
 ![Recommenders App Screenshot](./Visuals/streamlit_app.png)
 
 ## Results: Other Findings
