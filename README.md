@@ -4,16 +4,28 @@
 Whether you're a travel aficionado or a once-in-a-blue-moon vacationer, one of the most vital aspects for a successful trip is figuring out how you should spend your time at your destination - which is always a laborious undertaking!  It's very easy to get a huge list of "Must-see" for any place you are planning to visit, but many additional hours of research is required to understand which must-see points fits in with your preferences.
 
 ## Objective
-Focusing on a single tourism destination - Yosemite National Park, I will be using reviews of attractions listed under "Top Things To Do" on its **Trip Advisor** page, to create a travel preferences recommendation system, using NLP based Topic Modeling techniques.
-
-## Data Sources
-
-10,000+ reviews were scrapped from [Trip Advisor](www.tripadvisor.com).   
-Specifically, their top attractions for [Yosemite National Park](https://www.tripadvisor.in/Attractions-g61000-Activities-Yosemite_National_Park_California.html) was used to obtain a list of attractions and then reviews from each individual [attraction's page](https://www.tripadvisor.in/Attraction_Review-g61000-d139187-Reviews-Glacier_Point-Yosemite_National_Park_California.html) was used to obtain the reviews itself.  
+Focusing on a single tourism destination - **Yosemite National Park**, I use **reviews of attractions** listed under "Top Things To Do" on its **Trip Advisor** page, to create a **travel preferences based recommendation system**, using NLP based **Topic Modeling** techniques.
 
 ## Approach
 
-The scraped reviews underwent three steps of processing.
+The following steps were undertaken to deliver on the project's objective.
+
+1. [Data Collection](#data-sources) - Reviews scrapped from Trip Advisor 
+1. NLP Preprocessing - Series of text cleaning & manipulation to prepare corpus for topic modeling
+1. Topic Modelling - Dimensionality reduction using Corex algorithm & capture the recurrent themes across the documents (reviews)
+1. Topic Exploration - Exploring the impact of topics on sentiment outcomes & other trends.
+1. Recommendation System - 
+
+## Data Sources
+
+10,000+ reviews were scrapped from [Trip Advisor](https://www.tripadvisor.in).   
+Specifically, Trip Advisor's top attractions for [Yosemite National Park](https://www.tripadvisor.in/Attractions-g61000-Activities-Yosemite_National_Park_California.html) was used to obtain a list of attractions and then reviews from each individual [attraction's page](https://www.tripadvisor.in/Attraction_Review-g61000-d139187-Reviews-Glacier_Point-Yosemite_National_Park_California.html) was used to obtain the reviews itself.  
+
+![Data Source Collection Process Screenshots](./Visuals/Data_Source_Screenshots.jpg)
+
+
+
+The scraped reviews were .
 
 #### 1. [Pre-processing (Cleaning)](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/2-NLP_Preprocessing.ipynb)
 
