@@ -11,11 +11,11 @@ Focusing on a single tourism destination - **Yosemite National Park**, I use **r
 The following steps were undertaken to deliver on the project's objective.
 
 1. [Data Collection](#data-collection) - Reviews scrapped from Trip Advisor 
-1. [NLP Preprocessing](#nlp-preporcessing) - Series of text cleaning & manipulation to prepare corpus for topic modeling
+1. [NLP Preprocessing](#nlp-preprocessing) - Series of text cleaning & manipulation to prepare corpus for topic modeling
 1. [Topic Modelling](#topic-modeling) - Dimensionality reduction using Corex algorithm & capture the recurrent themes across the documents (reviews)
-1. [Topic Interpretation and Recommendation System](topic-interpretation-and-recommendation-system) - Exploring the impact of topics on sentiment outcomes along with other trends & creating a recommendation system.
+1. [Topic Interpretation and Recommendation System](#topic-interpretation-and-recommendation-system) - Exploring the impact of topics on sentiment outcomes along with other trends & creating a recommendation system.
 
-### Data Collection
+### [Data Collection](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/1-Data_Acquisition.ipynb)
 
 10,000+ reviews were scrapped from [Trip Advisor](https://www.tripadvisor.in).   
 Specifically, Trip Advisor's top attractions for [Yosemite National Park](https://www.tripadvisor.in/Attractions-g61000-Activities-Yosemite_National_Park_California.html) was used to obtain a list of attractions and then reviews from each individual [attraction's page](https://www.tripadvisor.in/Attraction_Review-g61000-d139187-Reviews-Glacier_Point-Yosemite_National_Park_California.html) was used to obtain the reviews itself.  
@@ -33,9 +33,9 @@ The corpus was preprocessed for noise removal, lemmatization & stop word removal
 Create a new column called 'Outlook Sentiment' was made using the ratings on each review - a 4 or 5 rating corresponded to a positive outcome, and the rest negative.
 
 The word cloud below provides a glimpse of the words present in the cleaned corpus.
-![Reviews Word Cloud](./Visuals/wordcloud.png)
+![Reviews Word Cloud](/Visuals/wordcloud.png)
 
-<p align="center"> <img src="/Visuals/wordcloud.png" alt="Reviews Word Cloud" width="200"/> </p>
+<p align="center"> <img src="/Visuals/wordcloud.png" alt="Reviews Word Cloud" width="400"/> </p>
 
 ### [Topic Modeling](https://github.com/navish92/Trip_Advisor_National_Parks/blob/main/Notebooks_Python_Files/3-Topic_Modeling_Corex.ipynb)
 
